@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>PricePilot – Search Once. Compare Everywhere.</title>
+<style>
+:root{--bg:#f4f6f8;--cd:#fff;--tx:#10231f;--mu:#566a65;--bd:#dde5e2;--pr:#0b6e5c;--pb:#e2f3ee;--gr:#0a7d3e;--wa:#9a5b00;--wb:#fff1d6;--rd:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0c1715;--cd:#13231f;--tx:#e8f2ef;--mu:#9bb2ac;--bd:#25403a;--pr:#4fd1b3;--pb:#173a33;--gr:#5bd68b;--wa:#f5c36b;--wb:#3a2d10;--rd:#ff8a80}}
+:root[data-theme=dark]{--bg:#0c1715;--cd:#13231f;--tx:#e8f2ef;--mu:#9bb2ac;--bd:#25403a;--pr:#4fd1b3;--pb:#173a33;--gr:#5bd68b;--wa:#f5c36b;--wb:#3a2d10;--rd:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 "Segoe UI",system-ui,sans-serif;padding-bottom:70px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0}
+a{color:var(--pr)}button,input,select{font:inherit;color:inherit}
+.w{max-width:1080px;margin:0 auto;padding:0 16px}
+header{background:var(--cd);border-bottom:1px solid var(--bd);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header .w{display:flex;align-items:center;gap:18px;height:56px}
+.logo{font:700 22px Georgia,serif;text-decoration:none;color:var(--tx)}.logo b{color:var(--pr)}
+nav{display:none;gap:16px;margin-left:auto}nav a{text-decoration:none;color:var(--mu);font-weight:600;font-size:15px}
+.demo{background:var(--wb);color:var(--wa);font-size:13px;padding:6px 0;text-align:center;font-weight:600}
+.hero{padding:44px 0 20px}.hero h1{font-size:clamp(34px,7vw,58px);max-width:11em}.hero p{color:var(--mu);max-width:36em;margin:12px 0 22px}
+.sb{position:relative}.sb form{display:flex;gap:8px;flex-wrap:wrap}
+.sb input{flex:1 1 260px;padding:15px 18px;border:2px solid var(--bd);border-radius:14px;background:var(--cd);min-width:0}
+.sb input:focus,button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--pr);outline-offset:2px}
+.btn{border:0;background:var(--pr);color:#fff;padding:12px 20px;border-radius:12px;font-weight:700;cursor:pointer}
+:root[data-theme=dark] .btn,.dk .btn{color:#06201a}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .btn{color:#06201a}}
+.btn.g{background:var(--pb);color:var(--pr)}.btn:disabled{opacity:.55;cursor:not-allowed}
+.sug{position:absolute;left:0;right:0;top:100%;background:var(--cd);border:1px solid var(--bd);border-radius:12px;margin-top:4px;z-index:4;overflow:hidden}
+.sug a{display:block;padding:10px 16px;color:var(--tx);text-decoration:none}.sug a:hover{background:var(--pb)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.chip{border:1px solid var(--bd);background:var(--cd);border-radius:99px;padding:6px 14px;font-size:14px;text-decoration:none;color:var(--tx);cursor:pointer}
+.chip.on{background:var(--pb);border-color:var(--pr);color:var(--pr)}
+section{margin:34px 0}section>h2{font-size:26px;margin-bottom:14px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:16px;padding:16px;display:block;text-decoration:none;color:var(--tx);position:relative}
+a.card:hover{border-color:var(--pr)}
+.ic{width:100%;height:96px;border-radius:12px;background:var(--pb);display:grid;place-items:center;font-size:42px;margin-bottom:10px}
+.pr{font:700 24px Georgia,serif}.mu{color:var(--mu);font-size:14px}.ok{color:var(--gr);font-weight:700}.bad{color:var(--rd);font-weight:600}
+.tag{display:inline-block;background:var(--pb);color:var(--pr);border-radius:8px;padding:2px 8px;font-size:12px;font-weight:700}
+.fav{position:absolute;right:12px;top:12px;border:0;background:var(--cd);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:18px}
+.tw{overflow-x:auto;border:1px solid var(--bd);border-radius:16px;background:var(--cd)}
+table{border-collapse:collapse;width:100%;min-width:760px}th,td{padding:12px;text-align:left;border-bottom:1px solid var(--bd);font-size:14px}th{color:var(--mu);font-weight:600}
+tr.best{background:var(--pb)}tr:last-child td{border:0}
+.two{display:grid;gap:18px}.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px}.stat div{background:var(--bg);border-radius:12px;padding:10px}.stat b{display:block;font-size:17px}
+svg text{fill:var(--mu);font-size:11px}
+details{background:var(--cd);border:1px solid var(--bd);border-radius:12px;padding:12px 16px;margin-bottom:8px}summary{cursor:pointer;font-weight:600}
+.msg{padding:12px 16px;border-radius:14px;margin:10px 0;max-width:760px}.u{background:var(--pr);color:#fff;margin-left:auto;width:fit-content}.a{background:var(--cd);border:1px solid var(--bd)}
+.bn{position:fixed;bottom:0;left:0;right:0;background:var(--cd);border-top:1px solid var(--bd);display:flex;justify-content:space-around;padding:6px 0 calc(6px + env(safe-area-inset-bottom,0px));z-index:6}
+.bn a{text-align:center;text-decoration:none;color:var(--mu);font-size:12px;padding:4px 10px}.bn span{display:block;font-size:20px}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 18px;border-radius:12px;z-index:9;display:none;max-width:90vw;font-size:14px}
+input[type=number]{padding:10px;border:2px solid var(--bd);border-radius:10px;background:var(--cd);width:130px}select{padding:8px;border-radius:10px;border:1px solid var(--bd);background:var(--cd)}
+footer{border-top:1px solid var(--bd);padding:24px 0;color:var(--mu);font-size:13px}
+@media(min-width:800px){nav{display:flex}.bn{display:none}body{padding:0}.two{grid-template-columns:1.1fr 1fr}}
+@media(prefers-reduced-motion:no-preference){.card{transition:border-color .15s}}
+</style></head><body>
+<header><div class="w"><a class="logo" href="#/">Price<b>Pilot</b></a><nav><a href="#/cat/all">Categories</a><a href="#/drops">Price drops</a><a href="#/ai">AI assistant</a><a href="#/saved">Saved</a><a href="#/alerts">My alerts</a></nav></div></header>
+<div class="demo">DEMO DATA – prices below are simulated sample values, not live prices from any store.</div>
+<main class="w" id="app"></main>
+<footer><div class="w">PricePilot compares offers and sends you to the original seller. Prices may change on the seller's website. This prototype uses demo data only; live data needs official APIs, affiliate feeds or merchant feeds.</div></footer>
+<div class="bn"><a href="#/"><span>⌂</span>Home</a><a href="#/search" onclick="setTimeout(()=>q&&q.focus(),50)"><span>⌕</span>Search</a><a href="#/alerts"><span>🔔</span>Alerts</a><a href="#/saved"><span>♡</span>Saved</a><a href="#/ai"><span>✦</span>AI</a></div>
+<div id="toast" role="status"></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+const ST=[{n:'Store A',fee:40,free:500},{n:'Store B',fee:40,free:5000},{n:'Store C',fee:0,free:0},{n:'Store D',fee:60,free:499}];
+const F=[1,.97,1.04,.99],BUDS=[5499,5299,5699,5450];
+const ICON={Electronics:'🎧',Mobiles:'📱',Laptops:'💻',Gaming:'🎮',Accessories:'🔌','Home Appliances':'🏠',Kitchen:'🍳',Fashion:'👟',Books:'📚',Sports:'⚽',Beauty:'🧴',Grocery:'🛒'};
+const CATS=[...Object.keys(ICON),'Other'];
+const h=s=>{let x=7;for(const c of s)x=(x*31+c.charCodeAt(0))>>>0;return x};
+const P=`Samsung Galaxy Buds 3|Samsung|Electronics|SM-R530|5499|ANC, 6h playback, IP57, mic
+Samsung Galaxy Buds 3 Pro|Samsung|Electronics|SM-R630|13999|ANC, 7h playback, IP57, mic
+boAt Airdopes 141|boAt|Electronics|AD141|1099|42h total playback, ENx mic
+realme Buds T300|realme|Electronics|RMX3992|2199|ANC, 40h total playback, mic
+OnePlus Nord Buds 3|OnePlus|Electronics|E510A|2299|ANC, 43h total playback, mic
+Noise Buds VS104|Noise|Electronics|VS104|999|45h playback, mic
+Apple AirPods Pro 2|Apple|Electronics|MTJV3|21999|ANC, 6h playback, mic
+Sony WH-CH520|Sony|Electronics|WH-CH520|3990|50h battery, mic, on-ear
+Apple iPhone 15 128GB Black|Apple|Mobiles|A3090-128|64900|128GB, 6.1in OLED
+Apple iPhone 15 256GB Black|Apple|Mobiles|A3090-256|74900|256GB, 6.1in OLED
+Samsung Galaxy S24 128GB|Samsung|Mobiles|SM-S921B|62999|8GB RAM, 128GB
+OnePlus 12R 8GB 128GB|OnePlus|Mobiles|CPH2585|39999|8GB RAM, 120Hz
+Redmi Note 13 5G 8GB 128GB|Xiaomi|Mobiles|23124RA7EO|17999|8GB RAM, 120Hz AMOLED
+realme Narzo 70 Pro 5G|realme|Mobiles|RMX3868|18999|8GB RAM, 50MP OIS
+Google Pixel 8a|Google|Mobiles|GKV4X|52999|8GB RAM, 128GB
+HP Pavilion 15 Ryzen 5|HP|Laptops|15-eg-r5|56990|Ryzen 5, 16GB RAM, 512GB SSD
+Lenovo IdeaPad Slim 3 i5|Lenovo|Laptops|82XB|54990|Core i5, 16GB RAM, 512GB SSD
+ASUS Vivobook 15 Ryzen 5|ASUS|Laptops|X1504|47990|Ryzen 5, 16GB RAM, 512GB SSD
+Acer Aspire 5 i5|Acer|Laptops|A515-58|52990|Core i5, 16GB RAM, 512GB SSD
+Apple MacBook Air M2 256GB|Apple|Laptops|MLXW3|89900|M2, 8GB RAM, 256GB SSD
+Dell Inspiron 15 i3|Dell|Laptops|3520|36990|Core i3, 8GB RAM, 512GB SSD
+Sony PlayStation 5 Slim|Sony|Gaming|CFI-2008|44990|1TB SSD, 4K, 120Hz
+Logitech G102 Mouse|Logitech|Gaming|G102|1195|8000 DPI, RGB
+Xbox Wireless Controller|Microsoft|Gaming|QAT-00001|5390|Bluetooth, USB-C
+Logitech MX Master 3S|Logitech|Accessories|MX3S|9995|8000 DPI, silent clicks
+Anker 20000mAh Power Bank|Anker|Accessories|A1647|3499|20000mAh, 22.5W
+Samsung 45W Charger|Samsung|Accessories|EP-T4510|1799|45W USB-C
+Philips Air Fryer HD9252|Philips|Kitchen|HD9252|8995|4.1L, 1400W
+Prestige Induction Cooktop|Prestige|Kitchen|PIC20|2399|2000W
+Mi Robot Vacuum Mop|Xiaomi|Home Appliances|B106|19999|Laser nav, 2200Pa
+LG 1.5 Ton 3 Star Split AC|LG|Home Appliances|PS-Q19|38990|Inverter, 1.5 ton
+Nike Revolution 7 Running Shoes|Nike|Fashion|FB2207|3995|Road running
+Atomic Habits (Paperback)|James Clear|Books|9781847941831|499|Paperback, English
+Cosco Football Size 5|Cosco|Sports|FB5|599|Size 5, PU
+Cetaphil Gentle Cleanser 250ml|Cetaphil|Beauty|CGC250|1049|250ml, all skin types
+Tata Sampann Toor Dal 1kg|Tata|Grocery|TSD1|179|1kg pack`.split('\n').map((l,i)=>{const[name,brand,cat,model,b,spec]=l.split('|');return{id:i,slug:name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-$/,''),name,brand,cat,model,base:+b,spec}});
+const OC={};
+function offers(p){return OC[p.id]||(OC[p.id]=ST.map((s,i)=>{const k=h(p.name+s.n),buds=p.id===0;const price=buds?BUDS[i]:Math.round(p.base*F[i]*(1+((k%41)-20)/1000));const fee=price>=s.free?0:s.fee;const un=!buds&&i>0&&k%13===0;const oos=!buds&&k%7===0;return{s:s.n,price,fee,total:price+fee,un,oos,min:k%170+3}}))}
+const live=p=>offers(p).filter(o=>!o.un&&!o.oos);
+const best=p=>live(p).reduce((a,b)=>b.total<a.total?b:a);
+const HC={};
+function hist(p){if(HC[p.id])return HC[p.id];const c=best(p).total,k=h(p.name),d=new Date(),a=[];for(let i=0;i<90;i++){const v=i===89?c:c*(1.04+.06*Math.sin(i/9+k%7)+((h(p.name+i)%30)-10)/500);const t=new Date(d);t.setDate(d.getDate()-(89-i));a.push({v:Math.round(v),t})}return HC[p.id]=a}
+const avg=p=>{const x=hist(p);return x.reduce((s,y)=>s+y.v,0)/x.length};
+const drop=p=>(avg(p)-best(p).total)/avg(p);
+const dt=t=>t.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+const ago=m=>m<60?m+' min ago':Math.floor(m/60)+' h ago';
+const LS={get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const toast=m=>{const t=$('#toast');t.textContent=m;t.style.display='block';clearTimeout(toast.i);toast.i=setTimeout(()=>t.style.display='none',3200)};
+const nz=s=>s.toLowerCase().replace(/[^a-z0-9]/g,'');
+function search(q){const nq=nz(q);if(!nq)return[];const tk=q.toLowerCase().split(/[^a-z0-9]+/).filter(t=>t&&!['the','for','a','of','and'].includes(t));
+return P.map(p=>{const key=nz(p.name+p.model+p.brand+p.cat);let s=0;if(key.includes(nq))s=1.2;else if(tk.length){s=tk.filter(t=>key.includes(t)).length/tk.length;if(s<.6)s=0}return{p,s,l:p.name.length}}).filter(x=>x.s).sort((a,b)=>b.s-a.s||a.l-b.l).map(x=>x.p)}
+function card(p){const b=best(p),o=live(p),f=LS.get('pp_fav',[]).includes(p.id);return`<a class="card" href="#/p/${p.slug}"><button class="fav" aria-label="Save ${esc(p.name)}" onclick="event.preventDefault();fav(${p.id})">${f?'♥':'♡'}</button><div class="ic" aria-hidden="true">${ICON[p.cat]||'📦'}</div><div class="mu">${esc(p.brand)} · ${esc(p.model)}</div><div><b>${esc(p.name)}</b></div><div class="pr">${fmt(b.total)}</div><div class="mu">Lowest estimated total · ${o.length} of 4 stores</div>${drop(p)>.04?`<span class="tag">${Math.round(drop(p)*100)}% below 90-day avg</span>`:''}</a>`}
+function fav(id){let f=LS.get('pp_fav',[]);f=f.includes(id)?f.filter(x=>x!==id):[...f,id];LS.set('pp_fav',f);route()}
+function go(e){e.preventDefault();location.hash='#/s/'+encodeURIComponent($('#q').value.trim());return false}
+let q;
+function sbox(v=''){return`<div class="sb"><form onsubmit="return go(event)" role="search"><input id="q" aria-label="Search products" autocomplete="off" value="${esc(v)}" placeholder="Search products, brands, models, or paste a product URL..." oninput="sug(this.value)"><button class="btn">Search</button><button type="button" class="btn g" onclick="toast('Image search needs a vision API – planned for a later phase.')">Search by image</button><button type="button" class="btn g" onclick="toast('Barcode scan (EAN/UPC) is planned for a later phase.')">Scan barcode</button></form><div class="sug" id="sug" hidden></div></div>`}
+let sd;function sug(v){clearTimeout(sd);sd=setTimeout(()=>{const r=v.trim().length>1?search(v).slice(0,5):[],s=$('#sug');s.hidden=!r.length;s.innerHTML=r.map(p=>`<a href="#/p/${p.slug}">${esc(p.name)}</a>`).join('')},150)}
+const head=(t,s)=>`<section><h2>${t}</h2>${s?`<p class="mu">${s}</p>`:''}</section>`;
+function home(){const pop=['Samsung Galaxy Buds 3','iPhone 15 128GB','laptop','SM-R530','air fryer'];
+const dr=[...P].sort((a,b)=>drop(b)-drop(a)).slice(0,6),up=[...P].sort((a,b)=>best(a).min-best(b).min).slice(0,4);
+return`<div class="hero"><h1>Search Once. Compare Every Store.</h1><p>Find products, compare prices, track price history, and discover better deals across multiple online stores.</p>${sbox()}<div class="chips"><span class="mu">Popular:</span>${pop.map(x=>`<a class="chip" href="#/s/${encodeURIComponent(x)}">${x}</a>`).join('')}</div></div>
+<section><h2>Popular categories</h2><div class="chips">${CATS.map(c=>`<a class="chip" href="#/cat/${encodeURIComponent(c)}">${ICON[c]||'📦'} ${c}</a>`).join('')}</div></section>
+<section><h2>Trending products</h2><div class="grid">${[0,8,16,21,10,2].map(i=>card(P[i])).join('')}</div></section>
+<section><h2>Biggest price drops</h2><p class="mu">Compared with the average of prices recorded by this demo over 90 days.</p><div class="grid">${dr.map(card).join('')}</div></section>
+<section><h2>Recently updated prices</h2><div class="grid">${up.map(card).join('')}</div></section>
+<section><h2>How it works</h2><div class="grid"><div class="card"><b>Search</b><p class="mu">Enter a name, model number, barcode or describe what you need.</p></div><div class="card"><b>Compare</b><p class="mu">See price, delivery and the estimated total from every store.</p></div><div class="card"><b>Track</b><p class="mu">Check price history and set a target-price alert.</p></div><div class="card"><b>Buy from the original seller</b><p class="mu">We link to the store's own page. We never sell the product.</p></div></div></section>
+<section><div class="card"><h2>Not sure what to buy?</h2><p class="mu">Ask PricePilot AI: "Wireless earbuds under ₹3,000 for studying". It shows its criteria, not just a verdict.</p><a class="btn" style="text-decoration:none;display:inline-block" href="#/ai">Ask PricePilot AI</a></div></section>
+<section><h2>FAQ</h2><details><summary>Are these live prices?</summary><p class="mu">No. This version runs on demo data. Live mode uses official APIs and feeds only, and every price shows when it was last checked.</p></details><details><summary>What is the estimated total?</summary><p class="mu">Product price plus delivery fee, minus verified discounts. Checkout may add taxes or fees we cannot see, so totals are marked as estimates.</p></details><details><summary>Why are 128GB and 256GB listed separately?</summary><p class="mu">Matching only merges listings when model identifiers and key specs (storage, RAM, colour) agree.</p></details></section>`}
+function results(qs){const r=search(qs);return`<div style="padding-top:24px">${sbox(qs)}</div><section><h2>${r.length?`${r.length} result${r.length>1?'s':''} for "${esc(qs)}"`:'No match found'}</h2>${r.length?`<p class="mu">Best match first. Other items are variants or similar products – storage and model variants are never merged.</p><div class="grid">${r.map(card).join('')}</div>`:'<p class="mu">Try a brand, model number such as SM-R530, or a category like laptops.</p>'}</section>`}
+function cat(c){const r=c==='all'?P:P.filter(p=>p.cat===c);return`<section style="padding-top:24px"><h2>${c==='all'?'All categories':esc(c)}</h2><div class="chips"><a class="chip ${c==='all'?'on':''}" href="#/cat/all">All</a>${CATS.map(x=>`<a class="chip ${x===c?'on':''}" href="#/cat/${encodeURIComponent(x)}">${x}</a>`).join('')}</div><div class="grid">${r.map(card).join('')||'<p class="mu">No demo products in this category yet.</p>'}</div></section>`}
+function chart(p){const x=hist(p),W=640,H=220,m=40,mn=Math.min(...x.map(y=>y.v)),mx=Math.max(...x.map(y=>y.v)),X=i=>m+i*(W-m-10)/89,Y=v=>H-24-(v-mn)/(mx-mn||1)*(H-50);
+return`<svg id="ch" viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="90-day price history"><text x="2" y="${Y(mx)+4}">${fmt(mx)}</text><text x="2" y="${Y(mn)+4}">${fmt(mn)}</text><line x1="${m}" x2="${W-10}" y1="${Y(mn)}" y2="${Y(mn)}" stroke="var(--bd)"/><polyline fill="none" stroke="var(--pr)" stroke-width="2.5" points="${x.map((y,i)=>X(i)+','+Y(y.v)).join(' ')}"/><circle id="dot" r="5" fill="var(--pr)" cx="${X(89)}" cy="${Y(x[89].v)}"/><text id="tip" x="${m}" y="14" style="fill:var(--tx);font-weight:700">${dt(x[89].t)}: ${fmt(x[89].v)}</text><text x="${m}" y="${H-6}">${dt(x[0].t)}</text><text x="${W-90}" y="${H-6}">Today</text></svg>`}
+function hover(p){const s=$('#ch');if(!s)return;const x=hist(p),mn=Math.min(...x.map(y=>y.v)),mx=Math.max(...x.map(y=>y.v));s.onmousemove=s.ontouchmove=e=>{const r=s.getBoundingClientRect(),cx=(e.touches?e.touches[0].clientX:e.clientX)-r.left,i=Math.max(0,Math.min(89,Math.round(((cx/r.width*640)-40)/590*89)));$('#dot').setAttribute('cx',40+i*590/89);$('#dot').setAttribute('cy',196-(x[i].v-mn)/(mx-mn||1)*170);$('#tip').textContent=dt(x[i].t)+': '+fmt(x[i].v)}}
+function product(slug){const p=P.find(x=>x.slug===slug);if(!p)return head('Product not found','Try searching again.');
+const o=offers(p),b=best(p),L=live(p),pr=L.map(x=>x.price),H=hist(p),vs=H.map(y=>y.v),lo=Math.min(...vs),hi=Math.max(...vs),ch=(H[89].v-H[0].v)/H[0].v*100,al=LS.get('pp_alerts',[]).find(a=>a.id===p.id);
+const same=P.filter(x=>x.id!==p.id&&x.brand===p.brand&&x.cat===p.cat).slice(0,3);
+document.title=p.name+' price comparison | PricePilot';
+return`<div style="padding-top:20px"><a href="#/">← Home</a></div><div class="two" style="margin-top:12px"><div class="card"><div class="ic" style="height:200px;font-size:84px" aria-hidden="true">${ICON[p.cat]||'📦'}</div><span class="tag">${esc(p.cat)}</span><h1 style="font-size:32px;margin:8px 0">${esc(p.name)}</h1><p class="mu">${esc(p.brand)} · Model ${esc(p.model)}<br>${esc(p.spec)}<br>Product photos and ratings appear when a data source supplies them.</p><div class="pr">${fmt(b.total)}</div><div class="mu">Lowest estimated total · price range ${fmt(Math.min(...pr))}–${fmt(Math.max(...pr))} · ${L.length} stores</div></div>
+<div class="card"><h3>Set a price alert</h3><p class="mu">Current lowest total ${fmt(b.total)}. Notify me when it falls below:</p><p><input type="number" id="tp" aria-label="Target price" value="${al?al.target:Math.round(b.total*.94/100)*100}"> <button class="btn" onclick="setAlert(${p.id})">Save alert</button></p><p class="mu">${al?`Alert active: below ${fmt(al.target)}.`:'Alerts show in this app and, if allowed, as browser notifications. Email alerts need the backend.'}</p><button class="btn g" onclick="fav(${p.id})">${LS.get('pp_fav',[]).includes(p.id)?'♥ Saved':'♡ Save product'}</button></div></div>
+<section><h2>Compare stores</h2><div class="tw"><table><thead><tr><th>Store</th><th>Price</th><th>Delivery</th><th>Discount</th><th>Coupon</th><th>Estimated total</th><th>Availability</th><th>Updated</th><th></th></tr></thead><tbody>${o.map(x=>x.un?`<tr><td>${x.s}</td><td colspan="7" class="mu">Price currently unavailable (source error logged for admins)</td><td></td></tr>`:`<tr class="${x===b?'best':''}"><td><b>${x.s}</b> ${x===b?'<span class="tag">Lowest total</span>':''}</td><td>${fmt(x.price)}</td><td>${x.fee?fmt(x.fee):'Free'}</td><td class="mu">None verified</td><td class="mu">–</td><td><b>${fmt(x.total)}</b><div class="mu">estimate</div></td><td class="${x.oos?'bad':'ok'}">${x.oos?'Out of stock':'In stock'}</td><td class="mu">${ago(x.min)}<br>demo data</td><td><button class="btn" ${x.oos?'disabled':''} onclick="toast('Demo: live mode opens the seller\\'s own product page.')">Visit store</button></td></tr>`).join('')}</tbody></table></div><p class="mu">Estimated total = product price + delivery − verified discounts. Final checkout amount may differ. Price may change on the seller's website.</p></section>
+<section><h2>Price history (90 days)</h2><div class="card">${chart(p)}<div class="stat"><div><span class="mu">Current</span><b>${fmt(H[89].v)}</b></div><div><span class="mu">Lowest</span><b>${fmt(lo)}</b></div><div><span class="mu">Highest</span><b>${fmt(hi)}</b></div><div><span class="mu">Average</span><b>${fmt(avg(p))}</b></div><div><span class="mu">Change</span><b>${ch.toFixed(1)}%</b></div><div><span class="mu">Lowest on</span><b>${dt(H[vs.indexOf(lo)].t)}</b></div></div><p class="mu">Simulated demo history. In live mode this shows prices collected by PricePilot.</p></div></section>
+${same.length?`<section><h2>Other ${esc(p.brand)} options</h2><div class="grid">${same.map(card).join('')}</div></section>`:''}
+<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'Product',name:p.name,brand:p.brand,mpn:p.model,offers:{'@type':'AggregateOffer',priceCurrency:'INR',lowPrice:Math.min(...pr),highPrice:Math.max(...pr),offerCount:L.length}}).replace(/</g,'\\u003c')}<\/script>`}
+function setAlert(id){const t=+$('#tp').value;if(!(t>0))return toast('Enter a target price above 0.');const a=LS.get('pp_alerts',[]).filter(x=>x.id!==id);a.push({id,target:t});LS.set('pp_alerts',a);try{if('Notification'in window&&Notification.permission==='default')Notification.requestPermission()}catch(e){}toast('Alert saved: notify below '+fmt(t));route()}
+function alerts(){const a=LS.get('pp_alerts',[]);return`<section style="padding-top:24px"><h2>My price alerts</h2>${a.length?`<div class="tw"><table><thead><tr><th>Product</th><th>Current price</th><th>Target price</th><th>Status</th><th></th></tr></thead><tbody>${a.map(x=>{const p=P[x.id],c=best(p).total,hit=c<x.target;return`<tr><td><a href="#/p/${p.slug}">${esc(p.name)}</a></td><td>${fmt(c)}</td><td>${fmt(x.target)}</td><td class="${hit?'ok':'mu'}">${hit?'Target reached':'Watching'}</td><td><button class="btn g" onclick="rmAlert(${x.id})">Remove</button></td></tr>`}).join('')}</tbody></table></div>`:'<p class="mu">No alerts yet. Open a product and set a target price.</p>'}</section>`}
+function rmAlert(id){LS.set('pp_alerts',LS.get('pp_alerts',[]).filter(x=>x.id!==id));route()}
+const saved=()=>{const f=LS.get('pp_fav',[]);return`<section style="padding-top:24px"><h2>Saved products</h2>${f.length?`<div class="grid">${f.map(i=>card(P[i])).join('')}</div>`:'<p class="mu">Tap the heart on any product to save it. Accounts and sync come with the backend phase.</p>'}</section>`};
+const drops=()=>`<section style="padding-top:24px"><h2>Price drops</h2><p class="mu">Products priced below their 90-day demo average.</p><div class="grid">${[...P].sort((a,b)=>drop(b)-drop(a)).slice(0,12).map(card).join('')}</div></section>`;
+let chat=[];
+function recommend(t){const m=t.match(/(?:under|below|less than|within|up ?to|max(?:imum)?)\s*(?:₹|rs\.?|inr)?\s*([\d,]+)\s*(k)?/i);let bud=m?parseInt(m[1].replace(/,/g,''))*(m[2]?1000:1):null;
+const C=[[/earbud|earphone|buds|headphone/i,p=>/buds|airpods|airdopes|headphone|WH-/i.test(p.name),'Wireless earbuds / headphones'],[/laptop|notebook/i,p=>p.cat==='Laptops','Laptops'],[/phone|mobile/i,p=>p.cat==='Mobiles','Mobile phones'],[/mouse|charger|power ?bank/i,p=>p.cat==='Accessories'||/mouse/i.test(p.name),'Accessories'],[/console|gaming/i,p=>p.cat==='Gaming','Gaming']];
+const c=C.find(x=>x[0].test(t));if(!c)return{txt:'I could not tell what product you need. Try: "I need a laptop for programming under ₹60,000".',r:[]};
+const U=[[/study|studying|class|lecture/i,'studying',['anc','mic','playback','battery']],[/program|coding|develop/i,'programming',['16gb','ssd','ryzen','core i5','core i7']],[/gaming|game/i,'gaming',['120hz','rtx','ssd']]];const u=U.find(x=>x[0].test(t)),kw=u?u[2]:[];
+let r=P.filter(c[1]).filter(p=>!bud||best(p).total<=bud).map(p=>({p,hit:kw.filter(k=>p.spec.toLowerCase().includes(k))})).sort((a,b)=>b.hit.length-a.hit.length||best(a.p).total-best(b.p).total).slice(0,4);
+return{txt:`I understood: Category – ${c[2]}. Budget – ${bud?fmt(bud):'not given'}. Use – ${u?u[1]:'not given'}.${kw.length?` Preferences I checked in listed specs: ${kw.join(', ')}.`:''} Ranking: more preference matches first, then lowest estimated total. This is a criteria-based shortlist, not a claim about the single best product.${r.length?'':' Nothing in the demo data fits that budget.'}`,r}}
+function ai(){return`<section style="padding-top:24px"><h2>PricePilot AI</h2><p class="mu">Describe what you need. I filter the demo catalogue and show why each product matched.</p><div class="chips">${['I need wireless earbuds under ₹3,000 for studying','I need a laptop for programming under ₹60,000','Are there similar earbuds below ₹3,000?'].map(x=>`<button class="chip" onclick="ask(this.textContent)">${x}</button>`).join('')}</div><div id="chat">${chat.map(m=>m.u?`<div class="msg u">${esc(m.u)}</div>`:`<div class="msg a">${esc(m.txt)}<div class="grid" style="margin-top:12px">${m.r.map(x=>`<a class="card" href="#/p/${x.p.slug}"><b>${esc(x.p.name)}</b><div class="pr">${fmt(best(x.p).total)}</div><div class="mu">${esc(x.p.spec)}</div>${x.hit.map(k=>`<span class="tag">spec: ${esc(k)}</span> `).join('')}</a>`).join('')}</div></div>`).join('')}</div><form onsubmit="event.preventDefault();ask($('#aq').value)" style="display:flex;gap:8px;margin-top:12px"><input id="aq" aria-label="Ask PricePilot AI" style="flex:1;padding:14px;border:2px solid var(--bd);border-radius:12px;background:var(--cd)" placeholder="e.g. laptop for programming under 60000"><button class="btn">Ask</button></form><p class="mu">Demo mode uses simple rules. Production connects a configurable LLM through a server-side API key.</p></section>`}
+function ask(t){t=String(t).trim();if(!t)return;chat.push({u:t},recommend(t));route()}
+function route(){const hsh=decodeURIComponent(location.hash.slice(2)),[a,...r]=hsh.split('/'),v=r.join('/');document.title='PricePilot – Search Once. Compare Everywhere.';
+$('#app').innerHTML=a==='s'?results(v):a==='p'?product(v):a==='cat'?cat(v||'all'):a==='alerts'?alerts():a==='saved'?saved():a==='drops'?drops():a==='ai'?ai():a==='search'?`<div style="padding-top:24px">${sbox()}</div>`:home();q=$('#q');if(a==='p')hover(P.find(x=>x.slug===v));if(a!=='ai')window.scrollTo(0,0)}
+addEventListener('hashchange',route);route();
+</script></body></html>
